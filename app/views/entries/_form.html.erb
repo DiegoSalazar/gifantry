@@ -1,41 +1,40 @@
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
-
-      <ul>
-      <% @entry.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @entry, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_file_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :image_file_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_file_size, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :image_file_size, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_content_type, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :image_content_type, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image_file_name %><br>
-    <%= f.text_field :image_file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :image_file_size %><br>
-    <%= f.number_field :image_file_size %>
-  </div>
-  <div class="field">
-    <%= f.label :image_content_type %><br>
-    <%= f.text_field :image_content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :album_id %><br>
-    <%= f.text_field :album_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  entries_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
