@@ -1,6 +1,5 @@
-<h1>Editing album</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+<%- model_class = Album -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Album %></h1>
+</div>
+<%= render :partial => 'form' %>
