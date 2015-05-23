@@ -5,17 +5,14 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  #->Prelang (user_login/devise)
   has_many :albums
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
-
-    # The User was found in our database
     return user if user
 
     # Check if the User is already registered without Facebook
     user = User.where(email: auth.info.email).first
-
     return user if user
 
     # The User was not found and we need to create them

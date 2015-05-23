@@ -5,14 +5,27 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Prelang: Analytics / Google Analytics -->
-    <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <!-- Prelang: Analytics / Google Analytics -->
+  <%= analytics_init if Rails.env.production? or Rails.env.development? %></head>
 <body>
-<%= render partial: "elements/navbar" %>
-<%= bootstrap_flash %>
+  <%= render "elements/navbar" %>
 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <%= bootstrap_flash %>
+      </div>
 
-<%= yield %>
+      <%= yield %>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">&copy; 2015 Diego Salazar</p>
+    </div>
+  </footer>
 
 </body>
 </html>
