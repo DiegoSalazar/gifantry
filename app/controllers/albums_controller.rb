@@ -2,25 +2,16 @@ class AlbumsController < ApplicationController
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_albums, only: [:index, :show]
   before_action :set_album, only: [:edit, :update, :destroy]
+  before_action :set_entry, only: [:index, :show]
+
 
   def index
-    @entries = [
-      "/test/downvote.gif",
-      "/test/did+you+fight+this+guy+by+any+chance+_33d2dec72fb5c4751e98273256381f0e.gif",
-      "/test/tumblr_lyh9zwsJTg1qifgls.gif",
-      "/test/sloth-follow-your-dreams.gif",
-      "/test/Popcorn-02-Stephen-Colbert.gif",
-      "/test/1948b.gif"
-    ]
+    @entries = Entry.sorted
   end
 
   def show
-    @entries = [
-      "/test/sloth-follow-your-dreams.gif",
-      "/test/Popcorn-02-Stephen-Colbert.gif",
-      "/test/1948b.gif"
-    ].shuffle
-    @album = Album.find_by_slug params[:id]
+    @album = get_album
+    @entries = @album.entries.sorted
   end
 
   def new
@@ -36,7 +27,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to album_path(@album.slug), notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -73,6 +64,14 @@ class AlbumsController < ApplicationController
 
   def set_album
     @album = Album.find(params[:id])
+  end
+
+  def get_album
+    @album = Album.where(slug: params[:id]).includes(:entries).first or raise ActiveRecord::RecordNotFound
+  end
+
+  def set_entry
+    @entry = Entry.new
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,9 @@
-<div id="entries" class="col-sm-8">
-  <% @entries.each do |entry| %>
-    <img src="<%= entry %>" />
+<div id="entries-list" class="col-sm-10">
+  <div id="dropzone-queue" class="dropzone-previews"></div>
+
+  <% if @entries.empty? %>
+    <p class="text-center">Drag something here to upload!</p>
+  <% else %>
+    <%= render @entries %>
   <% end %>
 </div>

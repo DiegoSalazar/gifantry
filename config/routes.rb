@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :albums
-  resources :entries
+  authenticate :user do
+    resources :albums
+    resources :entries
+    
+    root 'albums#index'
+  end
 
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
   
@@ -14,6 +18,4 @@ Rails.application.routes.draw do
     put    "signup"  => "devise/registrations#update", as: :update_user_registration
     get    "account" => "devise/registrations#edit",   as: :edit_user_registration
   end
-
-  root 'albums#index'
 end

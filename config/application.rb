@@ -19,5 +19,15 @@ module Gifantry
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.paperclip_defaults = {
+      storage: :s3,
+      path: "/entries/:id/:filename",
+      s3_credentials: {
+        bucket: ENV.fetch('GIFANTRY_S3_BUCKET_NAME', "gifantry"),
+        access_key_id: ENV.fetch('GIFANTRY_AWS_ACCESS_KEY_ID', ENV["AWS_ACCESS_KEY_ID"]),
+        secret_access_key: ENV.fetch('GIFANTRY_AWS_SECRET_ACCESS_KEY', ENV["AWS_SECRET_ACCESS_KEY"])
+      }
+    }
   end
 end

@@ -1,40 +1,28 @@
-<%= form_for @entry, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<% @entry ||= entry %>
+
+<%= form_for @entry, multipart: true, html: { class: 'form-horizontal form-model dropzone' } do |f| %>
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <%= f.label :album_id, class: 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :name, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_area :description, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :image_file_name, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :image_file_name, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :image_file_size, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.number_field :image_file_size, :class => 'text-field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :image_content_type, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :image_content_type, :class => 'text-field form-control' %>
+      <%= f.collection_select :album_id, Album.all, :id, :name, {}, { class: 'text-field form-control' } %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  entries_path, :class => 'btn btn-default' %>
+    <%= f.label :image, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.file_field :image, class: 'text-field form-control', multiple: true %>
     </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    <%= image_tag @entry.image.url %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit nil, class: "btn btn-primary" %>
+    <%= link_to "Cancel", :back, class: "btn btn-default" %>
   </div>
 <% end %>

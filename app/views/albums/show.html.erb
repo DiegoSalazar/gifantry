@@ -1,5 +1,5 @@
-<%= render "sidenav" %>
-
-<%= render "entries" %>
-
-<%= render "tools" %>
+<%= form_for @entry, multiple: true, html: { id: "entries", class: "dropzone col-sm-12" } do |f| %>
+  <%= render "sidenav" %>
+  <%= render "entries" %>
+  <%= f.hidden_field :album_id, value: @album.try(:id) %>
+<% end %>

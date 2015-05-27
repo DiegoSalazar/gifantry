@@ -1,0 +1,51 @@
+<figure>
+  <%= link_to entry.image.url do %>
+    <%= image_tag entry.image.url %>
+  <% end %>
+
+  <div class="entry-tools">
+    <a href="#" class="zoom" data-toggle="modal" data-target="#modal_<%= dom_id entry %>">
+      <span class="fa fa-arrows"></span>
+    </a>
+
+    <%= link_to entry, class: "pull-right", data: { method: :delete, confirm: "Are you sure you want to delete #{entry.image_file_name}?" } do %>
+      <span class="fa fa-remove"></span>
+    <% end %>
+    <%= link_to edit_entry_path(entry), class: "pull-right" do %>
+      <span class="fa fa-edit"></span>
+    <% end %>
+  </div>
+
+  <div id="modal_<%= dom_id entry %>" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <figure>
+            <%= image_tag entry.image.url %>
+            <figcaption>
+            <div class="form-group">
+              <%= text_field_tag "#", entry.image.url, class: "select-text" %>
+            </div>
+
+              <div class="info">
+                <span>
+                  Album:
+                  <em><%= entry.album.try(:name) || "None" %></em>
+                </span>
+                <span>
+                  Size:
+                  <em><%= number_to_human_size entry.image_file_size %></em>
+                </span>
+                <span>
+                  Uploaded at:
+                  <em><%= I18n.l entry.created_at, format: :short %></em>
+                </span>
+              </div>
+
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</figure>

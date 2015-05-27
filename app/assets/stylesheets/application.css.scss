@@ -10,14 +10,14 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
+*= require superhero.bootstrap.min
+*= require dropzone
 *= require_tree .
 *= require_self
 */
-@import "bootstrap_configuration";
 
-@import "bootstrap-sprockets";
-
-@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 //->Prelang (ui_framework:twitter_bootstrap)
 
@@ -51,7 +51,12 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: #4e5d6c;
+  padding: 20px 0;
+
+  .text-muted {
+    color: #f5f5f5;
+  }
 }
 
 /* Nested Stacked Nav */
@@ -83,12 +88,72 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
 
 /* Entries */
 
-#entries {
-  overflow: hidden;
+#entries.dropzone {
+  padding: 0;
+}
 
-  img {
-    width: 47%;
+.form-model img {
+  max-width: 100%;
+}
+
+#entries-list {
+  overflow: hidden;
+  min-height: 400px;
+  padding: 0;
+
+  > figure {
+    width: 48%;
     float: left;
+    box-sizing: border-box;
     margin: 0 15px 15px 0;
+    position: relative;
+    overflow: hidden;
+
+    figcaption {
+      margin-top: 20px;
+
+      input[type="text"] {
+        width: 100%;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .entry-tools {
+      background: #333;
+      opacity: 0.4;
+      position: absolute;
+      bottom: -31px;
+      width: 100%;
+      padding: 5px 7px;
+
+      a .fa {
+        padding: 3px 3px 4px 4px;
+        border-radius: 4px;
+      }
+
+      a:hover .fa {
+        background-color: #ebebeb;
+      }
+    }
+
+    &:hover .entry-tools {
+      bottom: 0;
+    }
   }
+
+  > :nth-child(2n + 0):not(.text-center) { float: right; }
+}
+
+.modal .info span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Dropzone */
+
+.dropzone {
+  border: 0 none;
 }

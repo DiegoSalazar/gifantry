@@ -13,6 +13,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap.min
+//= require dropzone
 
 //= require_tree .
+
+Dropzone.autoDiscover = false;
+
+$(function() {
+  var dropdiv = $("#entries")
+
+  var dropzone = new Dropzone(dropdiv[0], {
+    paramName: "entry[image]",
+    previewsContainer: "#dropzone-queue",
+    dictDefaultMessage: "",
+    clickable: "#clickable"
+  });
+
+  $(document).on("click", ".select-text", function() {
+    $(this).select();
+  });
+
+  
+});

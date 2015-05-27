@@ -1,13 +1,21 @@
 <div class="col-sm-2 form-group">
   <ul class="nav nav-stacked nav-pills">
     <li role="presentation" class="<%= "active" if params[:id].nil? %>">
-      <a href="/">All</a>
+      <a href="/">
+        All
+        <div class="badge pull-right">
+            <%= Entry.count %>
+          </div>
+      </a>
     </li>
 
     <% @albums.each do |album| %>
       <li role="presentation" class="<%= "active" if album.slug == params[:id] %>">
         <a href="<%= album_path album.slug %>">
           <%= album.name %>
+          <div class="badge pull-right">
+            <%= album.entries_count %>
+          </div>
         </a>
       </li>
     <% end %>
@@ -15,7 +23,7 @@
     <li class="divider">&nbsp;</li>
 
     <li>
-      <%= link_to "Add Album", new_album_path, class: 'btn btn-primary' %>
+      <%= link_to "Add Album", new_album_path, class: 'btn btn-default btn-block' %>
     </li>
   </ul>  
 </div>

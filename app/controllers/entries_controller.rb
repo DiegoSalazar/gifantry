@@ -1,28 +1,20 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
-  # GET /entries
-  # GET /entries.json
   def index
     @entries = Entry.all
   end
 
-  # GET /entries/1
-  # GET /entries/1.json
   def show
   end
 
-  # GET /entries/new
   def new
     @entry = Entry.new
   end
 
-  # GET /entries/1/edit
   def edit
   end
 
-  # POST /entries
-  # POST /entries.json
   def create
     @entry = Entry.new(entry_params)
 
@@ -35,14 +27,14 @@ class EntriesController < ApplicationController
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
+  rescue => e
+    render json: { error: e.message }, status: :server_error
   end
 
-  # PATCH/PUT /entries/1
-  # PATCH/PUT /entries/1.json
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to album_path(@entry.album.slug), notice: 'Entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit }
@@ -51,12 +43,10 @@ class EntriesController < ApplicationController
     end
   end
 
-  # DELETE /entries/1
-  # DELETE /entries/1.json
   def destroy
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +59,11 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:name, :description, :image_file_name, :image_file_size, :image_content_type, :album_id)
+      params.require(:entry).permit(
+        :name,
+        :description,
+        :image,
+        :album_id
+      )
     end
 end

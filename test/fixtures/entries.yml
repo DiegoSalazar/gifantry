@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: entries
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  description        :text
+#  image_file_name    :string(255)
+#  image_file_size    :integer
+#  image_content_type :string(255)
+#  album_id           :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
