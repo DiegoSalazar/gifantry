@@ -5,8 +5,8 @@ gem "rails", "~> 4.2.0"
 
 gem "paperclip"
 gem "aws-sdk", "< 2.0"
-gem 'font-awesome-sass', '~> 4.3.0'
-gem 'acts-as-taggable-on', '~> 3.4'
+gem "font-awesome-sass", "~> 4.3.0"
+gem "acts-as-taggable-on", "~> 3.4"
 
 # Use postgresql as the database for Active Record
 gem "pg"

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :albums
     resources :entries
+    
     get "/tagged/:tag_name", to: "entries#index", as: :tagged_with
+    resources :tags, only: :index
 
     root 'albums#index'
   end

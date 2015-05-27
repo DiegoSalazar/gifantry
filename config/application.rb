@@ -29,5 +29,7 @@ module Gifantry
         secret_access_key: ENV.fetch('GIFANTRY_AWS_SECRET_ACCESS_KEY', ENV["AWS_SECRET_ACCESS_KEY"])
       }
     }
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

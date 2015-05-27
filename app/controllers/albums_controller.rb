@@ -6,12 +6,12 @@ class AlbumsController < ApplicationController
 
 
   def index
-    @entries = current_user.entries.sorted
+    @entries = current_user.entries.sorted.includes :tags
   end
 
   def show
     @album = get_album
-    @entries = @album.entries.sorted
+    @entries = @album.entries.sorted.includes :tags
   end
 
   def new
@@ -67,7 +67,7 @@ class AlbumsController < ApplicationController
   end
 
   def get_album
-    @album = current_user.albums.where(slug: params[:id]).includes(:entries).first or raise ActiveRecord::RecordNotFound
+    @album = current_user.albums.where(slug: params[:id]).includes(entries: :tags).first or raise ActiveRecord::RecordNotFound
   end
 
   def set_entry

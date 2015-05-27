@@ -15,24 +15,34 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require dropzone
+//= require jquery.tokeninput
 
 //= require_tree .
 
 Dropzone.autoDiscover = false;
 
 $(function() {
-  var dropdiv = $("#entries")
+  var dropdiv = $("#entries");
 
-  var dropzone = new Dropzone(dropdiv[0], {
-    paramName: "entry[image]",
-    previewsContainer: "#dropzone-queue",
-    dictDefaultMessage: "",
-    clickable: "#clickable"
-  });
+  if (dropdiv.length) {
+    var dropzone = new Dropzone(dropdiv[0], {
+      paramName: "entry[image]",
+      previewsContainer: "#dropzone-queue",
+      dictDefaultMessage: "",
+      clickable: "#clickable"
+    });
+  }
 
   $(document).on("click", ".select-text", function() {
     $(this).select();
   });
 
+  $(".token-input").tokenInput("/tags", {
+    theme: "mac",
+    tokenValue: "name",
+    preventDuplicates: true
+  });
   
+  var tokenList = $(".token-input-list-mac").addClass("form-control")
+  $(".token-input-dropdown-mac").width(tokenList.width() - 5)
 });
