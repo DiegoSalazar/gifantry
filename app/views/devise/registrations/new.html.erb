@@ -8,27 +8,27 @@
     <div class="form-group">
       <%= f.label :email, class: "control-label col-md-4" %>
       <div class="col-md-8">
-        <%= f.email_field :email, class: "text-field form-control", html: {spellcheck: "false"} %>
+        <%= f.email_field :email, class: "text-field form-control", html: {spellcheck: "false", disabled: true} %>
       </div>
     </div>
       
     <div class="form-group">
       <%= f.label :password, class: "control-label col-md-4" %>
       <div class="col-md-8">
-        <%= f.password_field :password, class: "text-field form-control", html: {autocomplete: "off"} %>
+        <%= f.password_field :password, class: "text-field form-control", html: {autocomplete: "off", disabled: true} %>
       </div>
     </div>
        
     <div class="form-group">
       <%= f.label :password_confirmation, "Password Confirmation", class: "control-label col-md-4" %>
       <div class="col-md-8">
-        <%= f.password_field :password_confirmation, class: "text-field form-control", html: {autocomplete: "off"} %>
+        <%= f.password_field :password_confirmation, class: "text-field form-control", html: {autocomplete: "off", disabled: true} %>
       </div>
     </div>
        
     <div class="form-group">
       <div class="col-md-offset-4 col-md-8">
-        <%= f.submit "Sign Up", class: "btn btn-primary" %>
+        <%= f.submit "Sign Up", class: "btn btn-primary", disabled: true %>
       </div>
     </div>
 
