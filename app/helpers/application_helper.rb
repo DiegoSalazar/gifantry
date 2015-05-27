@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def alert_mapping
-    @alert_mapping ||= { alert: "warning", notice: "info", error: "danger" }.with_indifferent_access
+    @alert_mapping ||= { alert: "warning", notice: "danger", error: "info" }.with_indifferent_access
   end
 end

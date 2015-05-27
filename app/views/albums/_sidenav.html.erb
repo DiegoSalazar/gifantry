@@ -1,11 +1,22 @@
 <div class="col-sm-2 form-group">
   <ul class="nav nav-stacked nav-pills">
-    <li role="presentation" class="<%= "active" if params[:id].nil? %>">
+    <% if params[:tag_name].present? %>
+      <li role="presentation" class="<%= "active" if params[:id].nil? %>">
+        <a href="/">
+          Tag: <%= params[:tag_name] %>
+          <div class="badge pull-right">
+            <%= @entries.count %>
+          </div>
+        </a>
+      </li>
+    <% end %>
+
+    <li role="presentation" class="<%= "active" if params[:id].blank? && params[:tag_name].blank? %>">
       <a href="/">
         All
         <div class="badge pull-right">
-            <%= Entry.count %>
-          </div>
+          <%= current_user.entries.count %>
+        </div>
       </a>
     </li>
 

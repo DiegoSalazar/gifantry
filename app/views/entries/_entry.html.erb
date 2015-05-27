@@ -22,26 +22,52 @@
         <div class="modal-body">
           <figure>
             <%= image_tag entry.image.url %>
-            <figcaption>
-            <div class="form-group">
-              <%= text_field_tag "#", entry.image.url, class: "select-text" %>
-            </div>
 
-              <div class="info">
-                <span>
-                  Album:
-                  <em><%= entry.album.try(:name) || "None" %></em>
-                </span>
-                <span>
-                  Size:
-                  <em><%= number_to_human_size entry.image_file_size %></em>
-                </span>
-                <span>
-                  Uploaded at:
-                  <em><%= I18n.l entry.created_at, format: :short %></em>
-                </span>
+            <figcaption>
+              <div class="form-group">
+                <%= text_field_tag "#", entry.image.url, class: "select-text" %>
               </div>
 
+              <div class="info row fieldset">
+                <dl class="col-sm-4">
+                  <dt class="label label-default">Album</dt>
+                  <dd>
+                    <pre class="prettyprint"><%= entry.album.try(:name) || "None" %></pre>
+                  </dd>
+                </dl>
+
+                <dl class="col-sm-4">
+                  <dt class="label label-default">Size</dt>
+                  <dd>
+                    <pre class="prettyprint"><%= number_to_human_size entry.image_file_size %></pre>
+                  </dd>
+                </dl>
+
+                <dl class="col-sm-4">
+                  <dt class="label label-default">Uploaded at</dt>
+                  <dd>
+                    <pre class="prettyprint"><%= I18n.l entry.created_at, format: :short %></pre>
+                  </dd>
+                </dl>
+
+                <% unless entry.tags.empty? %>
+                  <dl class="col-sm-12">
+                    <dt class="label label-default">Tags</dt>
+                    <dd>
+                      <pre class="prettyprint"><%= render partial: "tags/tag", collection: entry.tags, locals: { tags_count: entry.tags.count } %></pre>
+                    </dd>
+                  </dl>
+                <% end %>
+
+                <% unless entry.description.blank? %>
+                  <dl class="col-sm-12">
+                    <dt class="label label-default">Description</dt>
+                    <dd>
+                      <pre class="prettyprint"><%= entry.description %></pre>
+                    </dd>
+                  </dl>
+                <% end %>
+              </div>
             </figcaption>
           </figure>
         </div>

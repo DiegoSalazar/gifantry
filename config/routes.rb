@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :albums
     resources :entries
-    
+    get "/tagged/:tag_name", to: "entries#index", as: :tagged_with
+
     root 'albums#index'
   end
 
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
     
     # get    "signup"  => "devise/registrations#new",    as: :new_user_registration
     # post   "signup"  => "devise/registrations#create", as: :user_registration
-    # put    "signup"  => "devise/registrations#update", as: :update_user_registration
-    get    "account" => "devise/registrations#edit",   as: :edit_user_registration
+    put    "signup"  => "devise/registrations#update",  as: :update_user_registration
+    get    "account" => "devise/registrations#edit",    as: :edit_user_registration
+    delete "account" => "devise/registrations#destroy", as: :destroy_user_registration
   end
 end

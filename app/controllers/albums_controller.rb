@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
 
 
   def index
-    @entries = Entry.sorted
+    @entries = current_user.entries.sorted
   end
 
   def show
@@ -59,23 +59,22 @@ class AlbumsController < ApplicationController
   private
 
   def set_albums
-    @albums = Album.all
+    @albums = current_user.albums
   end
 
   def set_album
-    @album = Album.find(params[:id])
+    @album = current_user.albums.find params[:id]
   end
 
   def get_album
-    @album = Album.where(slug: params[:id]).includes(:entries).first or raise ActiveRecord::RecordNotFound
+    @album = current_user.albums.where(slug: params[:id]).includes(:entries).first or raise ActiveRecord::RecordNotFound
   end
 
   def set_entry
     @entry = Entry.new
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def album_params
-    params.require(:album).permit(:name, :user_id)
+    params.require(:album).permit(:name)
   end
 end

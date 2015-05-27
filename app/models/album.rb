@@ -19,7 +19,7 @@ class Album < ActiveRecord::Base
   before_validation :make_slug
   validates :name, :slug, presence: true, uniqueness: true
 
-  default_scope { order "LOWER(name)" }
+  default_scope { order "LOWER(albums.name)" }
 
   private
 

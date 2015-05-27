@@ -2,7 +2,9 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @entries = Entry.all
+    @albums = current_user.albums
+    @entries = get_entries
+    @entry = Entry.new
   end
 
   def show
@@ -52,18 +54,26 @@ class EntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entry
-      @entry = Entry.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def entry_params
-      params.require(:entry).permit(
-        :name,
-        :description,
-        :image,
-        :album_id
-      )
+  def set_entry
+    @entry = Entry.find(params[:id])
+  end
+
+  def get_entries
+    if params[:tag_name].present?
+      current_user.entries.sorted.tagged_with params[:tag_name]
+    else
+      current_user.entries.sorted
     end
+  end
+
+  def entry_params
+    params.require(:entry).permit(
+      :name,
+      :description,
+      :image,
+      :album_id,
+      :tag_list
+    )
+  end
 end

@@ -10,7 +10,7 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
-*= require superhero.bootstrap.min
+*= require cyborg.bootstrap.min
 *= require dropzone
 *= require_tree .
 *= require_self
@@ -114,6 +114,7 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
 
       input[type="text"] {
         width: 100%;
+        padding: 5px 10px;
       }
     }
 
@@ -147,13 +148,25 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   > :nth-child(2n + 0):not(.text-center) { float: right; }
 }
 
-.modal .info span {
-  display: inline-block;
-  margin-right: 10px;
+.info {
+  dl {
+    margin-bottom: 5px;
+  }
+  dt.label {
+    background-color: #2B3E53;
+  }
+  pre {
+    padding: 5px 10px;
+  }
 }
 
 /* Dropzone */
 
 .dropzone {
   border: 0 none;
+}
+
+/* Theme Tweaks */
+.label {
+  line-height: 1.8;
 }

@@ -1,43 +1,5 @@
-<%- model_class = Entry -%>
-<h1><%=t '.title', default: Entry %></h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_name) %></th>
-      <th><%= model_class.human_attribute_name(:image_file_size) %></th>
-      <th><%= model_class.human_attribute_name(:image_content_type) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', default: t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.id %></td>
-        <td><%= entry.name %></td>
-        <td><%= entry.description %></td>
-        <td><%= entry.image_file_name %></td>
-        <td><%= entry.image_file_size %></td>
-        <td><%= entry.image_content_type %></td>
-        <td><%=l entry.created_at, format: :long %></td>
-        <td>
-          <%= link_to entry_path(entry), class: 'btn btn-xs', title: "#{ t('.show', default: t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to entry_path(entry), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_entry_path,
-            class: 'btn btn-primary' %>
+<%= form_for @entry, multiple: true, html: { id: "entries", class: "dropzone col-sm-12" } do |f| %>
+  <%= render "albums/sidenav" %>
+  <%= render "albums/entries" %>
+  <%= f.hidden_field :album_id, value: @album.try(:id) %>
+<% end %>

@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string(255)
-#  description        :text
+#  description        :text0
 #  image_file_name    :string(255)
 #  image_file_size    :integer
 #  image_content_type :string(255)
@@ -16,10 +16,11 @@
 class Entry < ActiveRecord::Base
   belongs_to :album, counter_cache: true
   
+  scope :sorted, -> { order "entries.created_at DESC" }
+
   has_attached_file :image
   validates_attachment_content_type :image, content_type: [
     "image/jpeg", "image/pjpeg", "image/jpg", "image/png", "image/gif"
   ]
-
-  scope :sorted, -> { order "created_at DESC" }
+  acts_as_taggable
 end
