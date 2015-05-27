@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root 'albums#index'
   end
 
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}, skip: [:sessions, :registrations]
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, skip: [:sessions, :registrations]
   
   devise_scope :user do
     get    "login"   => "devise/sessions#new",         as: :new_user_session

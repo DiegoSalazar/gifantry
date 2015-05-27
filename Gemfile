@@ -56,3 +56,7 @@ group :development do
   gem "pry-rails"
   gem "annotate"
 end
+
+group :production do
+  gem "rails_12factor"
+end
