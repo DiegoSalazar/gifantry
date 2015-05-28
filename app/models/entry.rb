@@ -15,7 +15,6 @@
 
 class Entry < ActiveRecord::Base
   belongs_to :album, counter_cache: true
-  
   scope :sorted, -> { order "entries.created_at DESC" }
 
   has_attached_file :image
@@ -23,4 +22,19 @@ class Entry < ActiveRecord::Base
     "image/jpeg", "image/pjpeg", "image/jpg", "image/png", "image/gif"
   ]
   acts_as_taggable
+
+  include PgSearch
+  pg_search_scope :search,
+    against: {
+      image_file_name: 'B',
+      name: 'C',
+      description: 'D'
+    },
+    associated_against: {
+      tags: [:name],
+      album: [:name]
+    },
+    using: {
+      tsearch: { dictionary: "english", prefix: true }
+    }
 end

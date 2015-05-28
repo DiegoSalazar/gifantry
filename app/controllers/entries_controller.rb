@@ -60,10 +60,14 @@ class EntriesController < ApplicationController
   end
 
   def get_entries
+    entries = current_user.entries.sorted
+    
     if params[:tag_name].present?
-      current_user.entries.sorted.tagged_with params[:tag_name]
+      entries.tagged_with params[:tag_name]
+    elsif params[:search].present?
+      entries.search params[:search]
     else
-      current_user.entries.sorted
+      entries
     end
   end
 

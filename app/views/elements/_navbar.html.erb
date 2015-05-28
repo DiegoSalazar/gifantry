@@ -18,6 +18,10 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= render "shared/search" %>
+      </li>
+
       <% if defined?(Devise) %>
         <% if user_signed_in? %>
           <li class="dropdown">

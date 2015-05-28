@@ -3,6 +3,7 @@ ruby "2.2.0"
 
 gem "rails", "~> 4.2.0"
 
+gem "pg_search"
 gem "paperclip"
 gem "aws-sdk", "< 2.0"
 gem "font-awesome-sass", "~> 4.3.0"
