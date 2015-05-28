@@ -1,3 +1,8 @@
-<%= form_tag "/entries", method: :get, id: "search" do %>
-  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for stuff" %>
+<%= form_tag "/entries", method: :get, id: "search-form" do %>
+  <div class="input-group">
+    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for stuff", aria_describedby: "search-addon", autofocus: true %>
+    <span id="search-addon" class="input-group-addon">
+      <%= icon "search" %>
+    </span>
+  </div>
 <% end %>

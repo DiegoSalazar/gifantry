@@ -44,5 +44,14 @@ $(function() {
   });
   
   var tokenList = $(".token-input-list-mac").addClass("form-control")
-  $(".token-input-dropdown-mac").width(tokenList.width() - 5)
+  $(".token-input-dropdown-mac").width(tokenList.width() - 5);
+
+  // I wanted to animate the width of the search box on focus but couldn't
+  // get it to work with css - it only worked on hover.
+  var searchForm = $("#search-form");
+  $("#search").on("focus", function() {
+    searchForm.stop().animate({ width: "16em" }, 100);
+  }).on("blur", function() {
+    searchForm.stop().animate({ width: "12em" }, 100);
+  })
 });

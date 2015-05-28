@@ -34,7 +34,10 @@
     <li class="divider">&nbsp;</li>
 
     <li>
-      <%= link_to "New Album", new_album_path, class: 'btn btn-default btn-block' %>
+      <%= link_to new_album_path, class: 'btn btn-default btn-block' do %>
+        <span class="fa fa-plus-square"></span>
+        New Album
+      <% end %>
     </li>
   </ul>  
 </div>

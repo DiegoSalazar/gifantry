@@ -32,7 +32,7 @@
                 <dl class="col-sm-4">
                   <dt class="label label-default">Album</dt>
                   <dd>
-                    <pre class="prettyprint"><%= entry.album.try(:name) || "None" %></pre>
+                    <pre class="prettyprint"><%= link_to_if entry.album, entry.album.try(:name) || "None", [:album, id: entry.album.try(:slug)] %></pre>
                   </dd>
                 </dl>
 

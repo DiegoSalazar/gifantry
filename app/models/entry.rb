@@ -35,6 +35,10 @@ class Entry < ActiveRecord::Base
       album: [:name]
     },
     using: {
-      tsearch: { dictionary: "english", prefix: true }
+      tsearch: {
+        dictionary: "english",
+        prefix: true,
+        any_word: true
+      }
     }
 end

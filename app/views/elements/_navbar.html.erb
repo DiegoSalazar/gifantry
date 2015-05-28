@@ -7,7 +7,10 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <%= link_to "Gifantry", defined?(root_path) ? root_path : "#", class: "navbar-brand" %>
+    <%= link_to defined?(root_path) ? root_path : "#", class: "navbar-brand" do %>
+      <%= icon "cloud-upload" %>
+      Gifantry
+    <% end %>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,9 +30,19 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <span class="fa fa-user"></span>
+                  Edit Account
+                <% end %>
+              </li>
               <li class="divider"></li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="fa fa-sign-out"></span>
+                  Sign Out
+                <% end %>
+              </li>
             </ul>
           </li>
         <% else %>

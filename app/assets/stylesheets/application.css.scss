@@ -176,6 +176,9 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
 
 /* Custom Elements */
 
-#search {
+#search-form {
   padding-top: 6px;
+  width: 12em;
+  // transition: width 0.1s ease-in-out; 
+  // &:focus { width: 15em; } // this didn't work
 }
