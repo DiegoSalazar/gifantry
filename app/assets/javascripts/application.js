@@ -41,14 +41,16 @@ $(function() {
     $(this).select();
   });
 
-  $(".token-input").tokenInput("/tags", {
-    theme: "mac",
-    tokenValue: "name",
-    preventDuplicates: true
+  $(document).on("focus", ".token-input", function() {
+    $(this).tokenInput("/tags", {
+      theme: "mac",
+      tokenValue: "name",
+      preventDuplicates: true
+    });
+    
+    var tokenList = $(".token-input-list-mac").addClass("form-control")
+    $(".token-input-dropdown-mac").width(tokenList.width() - 5);
   });
-  
-  var tokenList = $(".token-input-list-mac").addClass("form-control")
-  $(".token-input-dropdown-mac").width(tokenList.width() - 5);
 
   // I wanted to animate the width of the search box on focus but couldn't
   // get it to work with css - it only worked on hover.

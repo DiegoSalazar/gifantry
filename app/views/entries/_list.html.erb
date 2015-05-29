@@ -4,6 +4,17 @@
   <% if @entries.empty? %>
     <p class="text-center">Drag something here to upload!</p>
   <% else %>
+    <div id="toolbar" class="form-group clearfix">
+      <div class="btn-group pull-right ">
+        <%= link_to icon("download"), "#", class: "btn btn-xs btn-default", title: "Download all" %>
+      </div> 
+      
+      <div class="btn-group pull-right m-right-7">
+        <%= link_to icon("list"), "#", class: "btn btn-xs btn-default", title: "List View", data: { view: "list" } %>
+        <%= link_to icon("th"), "#", class: "btn btn-xs btn-default", title: "Grid View", data: { view: "grid" } %>
+      </div>     
+    </div>
+
     <div id="infinite-entries">
       <%= render @entries %>
     </div>

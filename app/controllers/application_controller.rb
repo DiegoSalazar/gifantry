@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_entries
-    entries = current_user.entries.sorted
+    entries = current_user.entries.sorted.page params[:page]
 
     if params[:tag_name].present?
       entries.tagged_with params[:tag_name]
