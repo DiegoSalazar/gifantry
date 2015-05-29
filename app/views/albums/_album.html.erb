@@ -1,0 +1,8 @@
+<li id="<%= dom_id album %>" role="presentation" class="<%= "active" if album.id == @album.try(:id) %>">
+  <a href="<%= album_path album.slug %>">
+    <%= album.name %>
+    <div class="badge pull-right">
+      <%= album.entries_count %>
+    </div>
+  </a>
+</li>

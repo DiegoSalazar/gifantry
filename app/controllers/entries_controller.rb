@@ -8,6 +8,7 @@ class EntriesController < ApplicationController
   end
 
   def show
+    render layout: "modal_layout"
   end
 
   def new
@@ -17,16 +18,22 @@ class EntriesController < ApplicationController
   def edit
   end
 
+  def detail
+    render layout: "modal_layout"
+  end
+
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build entry_params
 
     respond_to do |format|
-      if @entry.save
+      if @entry.save!
         format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
+        format.json do
+          render json: { error: @entry.errors.full_messages }, status: :unprocessable_entity
+        end
       end
     end
   rescue => e
@@ -35,7 +42,7 @@ class EntriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @entry.update(entry_params)
+      if @entry.update entry_params
         format.html { redirect_to album_path(@entry.album.slug), notice: 'Entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
@@ -46,9 +53,11 @@ class EntriesController < ApplicationController
   end
 
   def destroy
+    name = @entry.display_name
     @entry.destroy
+
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to :back, notice: "The Entry \"#{name}\" was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -56,19 +65,7 @@ class EntriesController < ApplicationController
   private
 
   def set_entry
-    @entry = Entry.find(params[:id])
-  end
-
-  def get_entries
-    entries = current_user.entries.sorted
-    
-    if params[:tag_name].present?
-      entries.tagged_with params[:tag_name]
-    elsif params[:search].present?
-      entries.search params[:search]
-    else
-      entries
-    end
+    @entry = current_user.entries.find params[:id]
   end
 
   def entry_params

@@ -1,33 +1,61 @@
-<div class="col-sm-12">
-  <%- model_class = Entry -%>
-  <h1><%=t '.title', default: Entry %></h1>
+<% content_for :modal_title, funny_gif_titles.sample.html_safe %>
 
-  <div class="fieldset">
-    <dl>
-        <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-        <dd><pre class="prettyprint"><%= @entry.name %></pre></dd>
-        <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
-        <dd><pre class="prettyprint"><%= @entry.description %></pre></dd>
-        <dt class="label label-default"><%= model_class.human_attribute_name(:image_file_name) %></dt>
-        <dd><pre class="prettyprint"><%= @entry.image_file_name %></pre></dd>
-        <dt class="label label-default"><%= model_class.human_attribute_name(:image_file_size) %></dt>
-        <dd><pre class="prettyprint"><%= @entry.image_file_size %></pre></dd>
-        <dt class="label label-default"><%= model_class.human_attribute_name(:image_content_type) %></dt>
-        <dd><pre class="prettyprint"><%= @entry.image_content_type %></pre></dd>
-    </dl>
-  </div>
+<figure class="entry-info">
+  <%= image_tag @entry.image.url %>
 
-  <div class="form-group">
-    <%= link_to t('.back', default: t("helpers.links.back")),
-                entries_path, class: 'btn btn-default'  %>
-    <%= link_to t('.edit', default: t("helpers.links.edit")),
-                edit_entry_path(@entry), class: 'btn btn-default' %>
-    <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-                entry_path(@entry),
-                method: 'delete',
-                data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
-                class: 'btn btn-danger' %>
-  </div>
+  <figcaption>
+    <div class="form-group">
+      <%= text_field_tag "#", @entry.image.url, class: "select-text" %>
+    </div>
 
+    <div class="info row fieldset">
+      <dl class="col-sm-4">
+        <dt class="label label-default">Album</dt>
+        <dd>
+          <pre class="prettyprint"><%= link_to_if @entry.album, @entry.album.try(:name) || "None", [:album, id: @entry.album.try(:slug)] %></pre>
+        </dd>
+      </dl>
 
-</div>
+      <dl class="col-sm-4">
+        <dt class="label label-default">Size</dt>
+        <dd>
+          <pre class="prettyprint"><%= number_to_human_size @entry.image_file_size %></pre>
+        </dd>
+      </dl>
+
+      <dl class="col-sm-4">
+        <dt class="label label-default">Uploaded at</dt>
+        <dd>
+          <pre class="prettyprint"><%= I18n.l @entry.created_at %></pre>
+        </dd>
+      </dl>
+
+      <% unless @entry.name.blank? %>
+        <dl class="col-sm-12">
+          <dt class="label label-default">Name</dt>
+          <dd>
+            <pre class="prettyprint"><%= @entry.name %></pre>
+          </dd>
+        </dl>
+      <% end %>
+
+      <% unless @entry.description.blank? %>
+        <dl class="col-sm-12">
+          <dt class="label label-default">Description</dt>
+          <dd>
+            <pre class="prettyprint"><%= @entry.description %></pre>
+          </dd>
+        </dl>
+      <% end %>
+
+      <% unless @entry.tags.empty? %>
+        <dl class="col-sm-12">
+          <dt class="label label-default">Tags</dt>
+          <dd>
+            <pre class="prettyprint"><%= render partial: "tags/tag", collection: @entry.tags, locals: { tags_count: @entry.tags.count } %></pre>
+          </dd>
+        </dl>
+      <% end %>
+    </div>
+  </figcaption>
+</figure>

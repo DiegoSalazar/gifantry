@@ -1,0 +1,7 @@
+<% if @album.persisted? %>
+  $(".modal").modal("hide");
+  $("#sidenav").replaceWith("<%= j render('elements/sidenav') %>");
+  $("#<%= dom_id @album %>").effect("highlight", { color: "#ff8800" }, 3000);
+<% else %>
+  $("#new_album").prepend("<%= j render('elements/flash') %>");
+<% end %>

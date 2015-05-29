@@ -101,30 +101,22 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   min-height: 400px;
   padding: 0;
 
-  > figure {
-    width: 48%;
-    float: left;
-    box-sizing: border-box;
-    margin: 0 15px 15px 0;
-    position: relative;
+  .entry {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 16px 16px 0;
+    min-height: 100px;
     overflow: hidden;
+    position: relative;
 
-    figcaption {
-      margin-top: 20px;
-
-      input[type="text"] {
-        width: 100%;
-        padding: 5px 10px;
-      }
-    }
-
-    img {
-      width: 100%;
+    > a > img {
+      width: 200px;
+      height: 200px;
     }
 
     .entry-tools {
       background: #333;
-      opacity: 0.4;
+      opacity: 0.6;
       position: absolute;
       bottom: -31px;
       width: 100%;
@@ -144,8 +136,18 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
       bottom: 0;
     }
   }
+}
 
-  > :nth-child(2n + 0):not(.text-center) { float: right; }
+.entry-info {
+  > img {
+    width: 100%;
+    margin-bottom: 20px
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 5px 10px;
+  }
 }
 
 .info {

@@ -1,10 +1,10 @@
-<figure class="entry">
-  <%= link_to entry.image.url do %>
+<div id="<%= dom_id entry %>" class="entry thumbnail">
+  <%= link_to entry.image.url, class: "" do %>
     <%= image_tag entry.image.url %>
   <% end %>
 
   <div class="entry-tools">
-    <a href="#" class="zoom" data-toggle="modal" data-target="#modal_<%= dom_id entry %>">
+    <a href="#" class="zoom" data-toggle="modal" data-remote="<%= entry_path entry %>" data-target="#modal">
       <span class="fa fa-arrows"></span>
     </a>
 
@@ -19,68 +19,8 @@
   <div id="modal_<%= dom_id entry %>" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-body">
-          <figure>
-            <%= image_tag entry.image.url %>
 
-            <figcaption>
-              <div class="form-group">
-                <%= text_field_tag "#", entry.image.url, class: "select-text" %>
-              </div>
-
-              <div class="info row fieldset">
-                <dl class="col-sm-4">
-                  <dt class="label label-default">Album</dt>
-                  <dd>
-                    <pre class="prettyprint"><%= link_to_if entry.album, entry.album.try(:name) || "None", [:album, id: entry.album.try(:slug)] %></pre>
-                  </dd>
-                </dl>
-
-                <dl class="col-sm-4">
-                  <dt class="label label-default">Size</dt>
-                  <dd>
-                    <pre class="prettyprint"><%= number_to_human_size entry.image_file_size %></pre>
-                  </dd>
-                </dl>
-
-                <dl class="col-sm-4">
-                  <dt class="label label-default">Uploaded at</dt>
-                  <dd>
-                    <pre class="prettyprint"><%= I18n.l entry.created_at %></pre>
-                  </dd>
-                </dl>
-
-                <% unless entry.name.blank? %>
-                  <dl class="col-sm-12">
-                    <dt class="label label-default">Name</dt>
-                    <dd>
-                      <pre class="prettyprint"><%= entry.name %></pre>
-                    </dd>
-                  </dl>
-                <% end %>
-
-                <% unless entry.description.blank? %>
-                  <dl class="col-sm-12">
-                    <dt class="label label-default">Description</dt>
-                    <dd>
-                      <pre class="prettyprint"><%= entry.description %></pre>
-                    </dd>
-                  </dl>
-                <% end %>
-
-                <% unless entry.tags.empty? %>
-                  <dl class="col-sm-12">
-                    <dt class="label label-default">Tags</dt>
-                    <dd>
-                      <pre class="prettyprint"><%= render partial: "tags/tag", collection: entry.tags, locals: { tags_count: entry.tags.count } %></pre>
-                    </dd>
-                  </dl>
-                <% end %>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
       </div>
     </div>
   </div>
-</figure>
+</div>

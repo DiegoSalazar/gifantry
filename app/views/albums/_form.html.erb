@@ -1,15 +1,23 @@
-<%= form_for @album, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<% content_for :modal_title do %>
+  <%= icon "plus" %>
+  New Album
+<% end %>
+
+<%= form_for @album, html: { remote: true, class: "form-horizontal" } do |f| %>
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <%= f.label :name, class: "control-label col-md-2" %>
     <div class="col-md-10">
-      <%= f.text_field :name, :class => 'text-field form-control' %>
+      <%= f.text_field :name, class: "text-field form-control", data: { autofocus: true } %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), albums_path, :class => 'btn btn-default' %>
+    <div class="col-md-offset-2 col-md-10">
+      <%= f.submit nil, class: "btn btn-primary", data: { disable_with: "Giffing..." } %>
+
+      <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">
+        Cancel
+      </button>
     </div>
   </div>
 <% end %>

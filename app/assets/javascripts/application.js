@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui
+//= require jquery.remotipart
 //= require turbolinks
 //= require bootstrap.min
 //= require dropzone
@@ -22,7 +24,8 @@
 Dropzone.autoDiscover = false;
 
 $(function() {
-  var dropdiv = $("#entries");
+  var dropdiv = $("#entries"),
+      progressBar = $("#progress-bar");
 
   if (dropdiv.length) {
     var dropzone = new Dropzone(dropdiv[0], {
@@ -53,5 +56,17 @@ $(function() {
     searchForm.stop().animate({ width: "16em" }, 100);
   }).on("blur", function() {
     searchForm.stop().animate({ width: "12em" }, 100);
+  });
+
+  // autofocus on fields in a modal after it opens
+  $(document).on("loaded.bs.modal", function() {
+    $("[data-autofocus='true']").focus();
+  });
+
+  // destroy modals because we use the remote option. this fixes any caching issues
+  $(document).on("hidden.bs.modal", function(e) {
+    var modal = $(e.target).data("bs.modal", null);
+    modal.find(".modal-header").html("<h4 class='heading-title'>Loading...</h4>");
+    modal.find(".modal-body").html(progressBar.html());
   })
 });

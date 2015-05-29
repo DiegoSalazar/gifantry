@@ -15,11 +15,12 @@
 
 class Entry < ActiveRecord::Base
   belongs_to :album, counter_cache: true
+  belongs_to :user, counter_cache: true
   scope :sorted, -> { order "entries.created_at DESC" }
 
   has_attached_file :image
   validates_attachment_content_type :image, content_type: [
-    "image/jpeg", "image/pjpeg", "image/jpg", "image/png", "image/gif"
+    "image/jpeg", "image/pjpeg", "image/jpg", "image/png", "image/gif", "image/gifv"
   ]
   acts_as_taggable
 
@@ -41,4 +42,8 @@ class Entry < ActiveRecord::Base
         any_word: true
       }
     }
+
+  def display_name
+    name || image_file_name
+  end
 end

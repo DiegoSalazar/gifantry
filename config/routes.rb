@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'imports/index'
+
   authenticate :user do
     resources :albums
     resources :entries
+    resources :imports, only: [:index, :create]
     
     get "/tagged/:tag_name", to: "entries#index", as: :tagged_with
     resources :tags, only: :index

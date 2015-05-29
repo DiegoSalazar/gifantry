@@ -4,7 +4,6 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:edit, :update, :destroy]
   before_action :set_entry, only: [:index, :show]
 
-
   def index
     @entries = current_user.entries.sorted.includes :tags
   end
@@ -16,6 +15,7 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    render layout: "modal_layout" if request.xhr?
   end
 
   def edit
@@ -29,9 +29,14 @@ class AlbumsController < ApplicationController
       if @album.save
         format.html { redirect_to album_path(@album.slug), notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
+        format.js { set_albums }
       else
         format.html { render :new }
         format.json { render json: @album.errors, status: :unprocessable_entity }
+        format.js do
+          flash.now[:error] = @album.errors.full_messages.to_sentence
+          set_albums
+        end
       end
     end
   end
@@ -58,16 +63,12 @@ class AlbumsController < ApplicationController
 
   private
 
-  def set_albums
-    @albums = current_user.albums
-  end
-
   def set_album
     @album = current_user.albums.find params[:id]
   end
 
   def get_album
-    @album = current_user.albums.where(slug: params[:id]).includes(entries: :tags).first or raise ActiveRecord::RecordNotFound
+    current_user.albums.where(slug: params[:id]).includes(entries: :tags).first or raise ActiveRecord::RecordNotFound
   end
 
   def set_entry

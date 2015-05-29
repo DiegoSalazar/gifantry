@@ -3,6 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  protected
+
+  def set_albums
+    @albums = current_user.albums
+  end
+
+  def get_entries
+    entries = current_user.entries.sorted
+
+    if params[:tag_name].present?
+      entries.tagged_with params[:tag_name]
+    elsif params[:search].present?
+      entries.search params[:search]
+    else
+      entries
+    end
+  end
+
   private
   
   #-> Prelang (user_login:devise)

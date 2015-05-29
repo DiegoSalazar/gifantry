@@ -1,6 +1,8 @@
 <div class="col-sm-12">
-  <h1>
-    <%=t '.title', default: [:'helpers.titles.edit', 'Edit %{model}'], model: Album %>
-  </h1>
-  <%= render 'form' %>
+  <% unless request.xhr? %>
+    <h1>
+      <%=t ".title", default: [:"helpers.titles.edit", "Edit %{model}"], model: Album %>
+    </h1>
+  <% end %>
+  <%= render "form" %>
 </div>

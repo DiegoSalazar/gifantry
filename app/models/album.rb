@@ -16,10 +16,10 @@ class Album < ActiveRecord::Base
   belongs_to :user
   has_many :entries
 
+  default_scope { order "created_at DESC" }
+
   before_validation :make_slug
   validates :name, :slug, presence: true, uniqueness: true
-
-  default_scope { order "LOWER(albums.name)" }
 
   private
 

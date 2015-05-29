@@ -1,0 +1,42 @@
+<% content_for :modal_title, "Import Stuff" %>
+
+<div class="col-sm-12">
+  <% unless request.xhr? %>
+    <h1>New Album</h1>
+  <% end %>
+
+  <%= form_for :import, url: imports_path, html: { multipart: true, remote: true, class: "form-horizontal" } do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="form-group">
+      <%= f.label :album_id, class: "control-label col-md-3" %>
+      <div class="col-md-9">
+        <%= f.collection_select :album_id, @albums, :id, :name, { include_blank: true, selected: @album_id }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :urls, "Paste URLs", class: "control-label col-md-3" %>
+      <div class="col-md-9">
+        <%= f.text_area :urls, rows: 2, class: "text-field form-control", data: { autofocus: true } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :files, "Upload From Computer", class: "control-label col-md-3" %>
+      <div class="col-md-9">
+        <%= f.file_field :files, multiple: true, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <%= f.submit "Import", class: "btn btn-primary", data: { disable_with: "Giffing..." } %>
+
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">
+          Cancel
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>
