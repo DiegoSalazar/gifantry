@@ -1,0 +1,7 @@
+$("#infinite-entries").append("<%= j render(@entries) %>");
+
+<% if @entries.last_page? %>
+  $(".pagination").html("This is the end, beautiful friend.");
+<% else %>
+  $(".pagination").html("<%= j link_to_next_page(@entries, 'Next Page', remote: true) %>");
+<% end %>

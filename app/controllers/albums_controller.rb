@@ -5,12 +5,12 @@ class AlbumsController < ApplicationController
   before_action :set_entry, only: [:index, :show]
 
   def index
-    @entries = current_user.entries.sorted.includes :tags
+    @entries = current_user.entries.sorted.includes(:tags).page params[:page]
   end
 
   def show
     @album = get_album
-    @entries = @album.entries.sorted.includes :tags
+    @entries = @album.entries.sorted.includes(:tags).page params[:page]
   end
 
   def new

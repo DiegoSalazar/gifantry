@@ -10,6 +10,8 @@ gem "font-awesome-sass", "~> 4.3.0"
 gem "acts-as-taggable-on", "~> 3.4"
 gem "remotipart", "~> 1.2"
 gem "typhoeus"
+gem "kaminari"
+gem "jquery-infinite-pages"
 
 # Use postgresql as the database for Active Record
 gem "pg"

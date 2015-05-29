@@ -4,6 +4,12 @@
   <% if @entries.empty? %>
     <p class="text-center">Drag something here to upload!</p>
   <% else %>
-    <%= render @entries %>
+    <div id="infinite-entries">
+      <%= render @entries %>
+    </div>
+
+    <p class="pagination clearfix">
+      <%= link_to_next_page @entries, "Next Page", remote: true %>
+    </p>
   <% end %>
 </div>

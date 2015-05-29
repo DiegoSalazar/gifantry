@@ -18,6 +18,7 @@
 //= require bootstrap.min
 //= require dropzone
 //= require jquery.tokeninput
+//= require jquery.infinite-pages
 
 //= require_tree .
 
@@ -68,5 +69,14 @@ $(function() {
     var modal = $(e.target).data("bs.modal", null);
     modal.find(".modal-header").html("<h4 class='heading-title'>Loading...</h4>");
     modal.find(".modal-body").html(progressBar.html());
-  })
+  });
+
+  $("#entries-list").infinitePages({
+    loading: function() {
+      return $(this).text("Loading next page...");
+    },
+    error: function() {
+      return $(this).button("There was an error, please try again");
+    }
+  });
 });
