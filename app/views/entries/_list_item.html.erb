@@ -1,0 +1,27 @@
+<li class="entry">
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="thumbnail">
+        <%= image_tag list_item.image.url %>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <%= text_field_tag nil, list_item.image.url, class: "form-control select-text" %>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="btn-group pull-right">
+        <%= link_to edit_entry_path(list_item), class: "btn btn-sm btn-primary" do %>
+          <span class="fa fa-edit"></span>
+          Edit
+        <% end %>
+
+        <%= link_to list_item, class: "btn btn-sm btn-danger", data: { method: :delete, confirm: "Are you sure you want to delete #{list_item.image_file_name}?" } do %>
+          <span class="fa fa-remove"></span>
+          Delete
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

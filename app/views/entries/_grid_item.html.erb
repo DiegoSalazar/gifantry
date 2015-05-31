@@ -1,0 +1,11 @@
+<div id="<%= dom_id grid_item %>" class="entry thumbnail">
+  <%= link_to entry_path(grid_item), data: { toggle: "modal", target: "#modal" } do %>
+    <%= image_tag grid_item.image.url %>
+  <% end %>
+
+  <div id="modal_<%= dom_id grid_item %>" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+</div>

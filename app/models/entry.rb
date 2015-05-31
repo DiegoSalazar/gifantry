@@ -14,6 +14,9 @@
 #
 
 class Entry < ActiveRecord::Base
+  VIEWS = { list: "list", grid: "grid" }
+  VIEWS.default = VIEWS[:grid]
+
   belongs_to :album, counter_cache: true
   belongs_to :user, counter_cache: true
   scope :sorted, -> { order "entries.created_at DESC" }

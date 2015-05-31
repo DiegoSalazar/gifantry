@@ -1,0 +1,10 @@
+<div id="toolbar" class="form-group clearfix">
+  <div class="btn-group pull-right ">
+    <%= link_to icon("download"), "#", class: "btn btn-xs btn-default", title: "Download all" %>
+  </div> 
+  
+  <div class="btn-group pull-right m-right-7">
+    <%= link_to icon("th"), "#", class: "btn btn-xs btn-default#{" active" if @entry_view == "grid"}", title: "Grid View", data: { view: "grid" } %>
+    <%= link_to icon("list"), "#", class: "btn btn-xs btn-default#{" active" if @entry_view == "list"}", title: "List View", data: { view: "list" } %>
+  </div>     
+</div>

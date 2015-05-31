@@ -96,44 +96,40 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   max-width: 100%;
 }
 
-#entries-list {
-  overflow: hidden;
+
+#entries-container {
   min-height: 400px;
-  padding: 0;
+  padding: 0 20px 0 0;
 
-  .entry {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 16px 16px 0;
-    min-height: 100px;
-    overflow: hidden;
-    position: relative;
-
-    > a > img {
-      width: 200px;
-      height: 200px;
+  .grid {
+    #infinite-entries {
+      -moz-column-count: 4;
+      -moz-column-gap: 20px;
+      -webkit-column-count: 4;
+      -webkit-column-gap: 20px;
+      column-count: 4;
+      column-gap: 20px;
     }
 
-    .entry-tools {
-      background: #333;
-      opacity: 0.6;
-      position: absolute;
-      bottom: -31px;
-      width: 100%;
-      padding: 5px 7px;
+    .entry {
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 0;
 
-      a .fa {
-        padding: 3px 3px 4px 4px;
-        border-radius: 4px;
-      }
+      > a {
+        display: inline-block;
+        width: 100%;
 
-      a:hover .fa {
-        background-color: #ebebeb;
+        img {
+          width: 100%;
+        }
       }
     }
+  }
 
-    &:hover .entry-tools {
-      bottom: 0;
+  .list {
+    .entry {
+      
     }
   }
 }
@@ -142,12 +138,7 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   > img {
     width: 100%;
     margin-bottom: 20px
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 5px 10px;
-  }
+  } 
 }
 
 .info {
@@ -158,6 +149,10 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
     background-color: #2B3E53;
   }
   pre {
+    padding: 5px 10px;
+  }
+  input[type="text"] {
+    width: 100%;
     padding: 5px 10px;
   }
 }
@@ -185,8 +180,29 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   // &:focus { width: 15em; } // this didn't work
 }
 
-#toolbar {
-  padding-right: 20px;
-}
-
 .m-right-7 { margin-right: 7px; }
+ 
+ 
+@media only screen and (max-width : 799px),
+  only screen and (max-device-width : 799px){
+  #infinite-entries {
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    column-count: 3;
+    column-gap: 10px;
+  }
+}
+ 
+@media only screen and (max-width : 599px),
+  only screen and (max-device-width : 599px){
+  #infinite-entries {
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    column-count: 24;
+    column-gap: 10px;
+  }
+}

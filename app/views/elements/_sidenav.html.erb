@@ -2,15 +2,15 @@
   <ul class="nav nav-stacked nav-pills">
     <li>
       <div class="row form-group">
-        <div class="col-sm-6">
-          <%= link_to "#", class: "btn btn-default btn-sm", data: { toggle: "modal", target: "#modal", remote: new_album_path } do %>
+        <div class="col-xs-6">
+          <%= link_to new_album_path, class: "btn btn-default btn-sm", data: { toggle: "modal", target: "#modal" } do %>
             <span class="fa fa-plus-square"></span>
             New Album
           <% end %>
         </div>
 
-        <div class="col-sm-6">
-          <%= link_to "#", class: "btn btn-default btn-sm btn-block", data: { toggle: "modal", target: "#modal", remote: imports_path(album_id: @album.try(:id)) } do %>
+        <div class="col-xs-6">
+          <%= link_to imports_path(album_id: @album.try(:id)), class: "btn btn-default btn-sm btn-block", data: { toggle: "modal", target: "#modal" } do %>
             <span class="fa fa-upload"></span>
             Import
           <% end %>

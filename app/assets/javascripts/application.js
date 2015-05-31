@@ -18,8 +18,7 @@
 //= require bootstrap.min
 //= require dropzone
 //= require jquery.tokeninput
-//= require jquery.infinite-pages
-
+//= require jquery.cookie
 //= require_tree .
 
 Dropzone.autoDiscover = false;
@@ -36,6 +35,10 @@ $(function() {
       clickable: "#clickable"
     });
   }
+
+  $("[data-view]").viewSwitcher(function() {
+    $("#entries-container").load(window.location.href + " #entries-container > div");
+  });
 
   $(document).on("click", ".select-text", function() {
     $(this).select();
@@ -73,12 +76,23 @@ $(function() {
     modal.find(".modal-body").html(progressBar.html());
   });
 
-  $("#entries-list").infinitePages({
-    loading: function() {
-      return $(this).text("Loading next page...");
-    },
-    error: function() {
-      return $(this).button("There was an error, please try again");
-    }
-  });
+  // $("#entries-list").infinitePages({
+  //   loading: function() {
+  //     return $(this).text("Loading next page...");
+  //   },
+  //   error: function() {
+  //     return $(this).button("There was an error, please try again");
+  //   }
+  // });
 });
+
+$.fn.viewSwitcher = function(callback) {
+  $(document).on("click", "[data-view]", function() {
+    var view = this.dataset.view;
+
+    $.cookie("entry_view", view);
+    callback.call(this, view);
+  });
+
+  return this;
+}

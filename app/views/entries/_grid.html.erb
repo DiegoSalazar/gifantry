@@ -1,5 +1,5 @@
 <div id="entries-container" class="col-sm-10">
-  <div class="list">
+  <div class="grid">
     <div id="dropzone-queue" class="dropzone-previews"></div>
 
     <% if @entries.empty? %>
@@ -7,9 +7,9 @@
     <% else %>
       <%= render "entries/toolbar" %>
 
-      <ul id="infinite-entries" class="list-unstyled">
-        <%= render partial: "entries/list_item", collection: @entries %>
-      </ul>
+      <div id="infinite-entries">
+        <%= render partial: "entries/grid_item", collection: @entries %>
+      </div>
 
       <div class="pagination pull-right">
         <%= paginate @entries %>

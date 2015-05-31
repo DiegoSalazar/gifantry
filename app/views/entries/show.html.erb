@@ -1,13 +1,13 @@
 <% content_for :modal_title, funny_gif_titles.sample.html_safe %>
 
 <figure class="entry-info">
+  <div class="info form-group">
+    <%= text_field_tag "#", @entry.image.url, class: "select-text" %>
+  </div>
+
   <%= image_tag @entry.image.url %>
 
   <figcaption>
-    <div class="form-group">
-      <%= text_field_tag "#", @entry.image.url, class: "select-text" %>
-    </div>
-
     <div class="info row fieldset">
       <dl class="col-sm-4">
         <dt class="label label-default">Album</dt>
@@ -56,6 +56,21 @@
           </dd>
         </dl>
       <% end %>
+
+      <hr>
+
+      <div class="col-sm-6">
+        <%= link_to edit_entry_path(@entry), class: "btn btn-sm btn-primary btn-block" do %>
+          <span class="fa fa-edit"></span>
+          Edit
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to @entry, class: "btn btn-sm btn-danger btn-block", data: { method: :delete, confirm: "Are you sure you want to delete #{@entry.image_file_name}?" } do %>
+          <span class="fa fa-remove"></span>
+          Delete
+        <% end %>
+      </div>
     </div>
   </figcaption>
 </figure>

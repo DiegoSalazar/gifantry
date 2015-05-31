@@ -1,26 +1,11 @@
 <div id="<%= dom_id entry %>" class="entry thumbnail">
-  <%= link_to entry.image.url, class: "" do %>
+  <%= link_to entry_path(entry), data: { toggle: "modal", target: "#modal" } do %>
     <%= image_tag entry.image.url %>
   <% end %>
 
-  <div class="entry-tools">
-    <a href="#" class="zoom" data-toggle="modal" data-remote="<%= entry_path entry %>" data-target="#modal">
-      <span class="fa fa-arrows"></span>
-    </a>
-
-    <%= link_to entry, class: "pull-right", data: { method: :delete, confirm: "Are you sure you want to delete #{entry.image_file_name}?" } do %>
-      <span class="fa fa-remove"></span>
-    <% end %>
-    <%= link_to edit_entry_path(entry), class: "pull-right" do %>
-      <span class="fa fa-edit"></span>
-    <% end %>
-  </div>
-
   <div id="modal_<%= dom_id entry %>" class="modal fade">
     <div class="modal-dialog">
-      <div class="modal-content">
-
-      </div>
+      <div class="modal-content"></div>
     </div>
   </div>
 </div>

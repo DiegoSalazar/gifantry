@@ -3,6 +3,7 @@ class AlbumsController < ApplicationController
   before_action :set_albums, only: [:index, :show]
   before_action :set_album, only: [:edit, :update, :destroy]
   before_action :set_entry, only: [:index, :show]
+  before_action :set_entry_view, only: [:index, :show]
 
   def index
     @entries = current_user.entries.sorted.includes(:tags).page params[:page]
@@ -73,6 +74,10 @@ class AlbumsController < ApplicationController
 
   def set_entry
     @entry = Entry.new
+  end
+
+  def set_entry_view
+    @entry_view = cookies[:entry_view] ||= Entry::VIEWS.default
   end
 
   def album_params
