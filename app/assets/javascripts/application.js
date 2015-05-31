@@ -19,6 +19,7 @@
 //= require dropzone
 //= require jquery.tokeninput
 //= require jquery.cookie
+//= require jquery.mobile-events
 //= require_tree .
 
 Dropzone.autoDiscover = false;
@@ -40,8 +41,9 @@ $(function() {
     $("#entries-container").load(window.location.href + " #entries-container > div");
   });
 
-  $(document).on("click", ".select-text", function() {
-    $(this).select();
+  $(document).on("singletap", ".select-text", function() {
+    this.focus();
+    this.setSelectionRange(0, 9999);
   });
 
   $(document).on("focus", ".token-input", function() {
