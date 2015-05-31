@@ -596,24 +596,6 @@ div.token-input-dropdown-mac ul li.token-input-selected-dropdown-item-mac span.t
 div.token-input-dropdown-mac ul li.token-input-selected-dropdown-item-mac.odd span.token-input-dropdown-item-description-mac {
     color: #fff;
 }
-/*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
-* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the bottom of the
-* compiled file so the styles you add here take precedence over styles defined in any styles
-* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
-* file per style scope.
-*
-
-
-
-
-
-*/
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -622,8 +604,8 @@ div.token-input-dropdown-mac ul li.token-input-selected-dropdown-item-mac.odd sp
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/assets/font-awesome/fontawesome-webfont.eot");
-  src: url("/assets/font-awesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("/assets/font-awesome/fontawesome-webfont.woff2") format("woff2"), url("/assets/font-awesome/fontawesome-webfont.woff") format("woff"), url("/assets/font-awesome/fontawesome-webfont.ttf") format("truetype"), url("/assets/font-awesome/fontawesome-webfont.svg#fontawesomeregular") format("svg");
+  src: url("../fonts/font-awesome/fontawesome-webfont.eot");
+  src: url("../fonts/font-awesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/font-awesome/fontawesome-webfont.woff2") format("woff2"), url("../fonts/font-awesome/fontawesome-webfont.woff") format("woff"), url("../fonts/font-awesome/fontawesome-webfont.ttf") format("truetype"), url("../fonts/font-awesome/fontawesome-webfont.svg#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3515,35 +3497,53 @@ div.token-input-dropdown-mac ul li.token-input-selected-dropdown-item-mac.odd sp
 .fa-medium:before {
   content: "\f23a";
 }
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
 
-/* line 27, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+
+
+
+
+
+*/
+/* line 27, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .yield {
   margin: 30px;
 }
 
-/* line 32, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 32, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .form-model {
   max-width: 750px;
 }
 
-/* line 37, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 37, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .form-user {
   max-width: 450px;
 }
 
-/* line 42, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 42, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 html {
   position: relative;
   min-height: 100%;
 }
 
-/* line 46, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 46, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
 
-/* line 50, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 50, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .footer {
   position: absolute;
   bottom: 0;
@@ -3552,40 +3552,40 @@ body {
   padding: 20px 0;
   border-top: 1px solid #282828;
 }
-/* line 58, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 58, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .footer .text-muted {
   color: #f5f5f5;
 }
 
 /* Nested Stacked Nav */
-/* line 65, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 65, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 ul.nav-stacked > li > a > i {
   float: right;
 }
 
-/* line 68, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 68, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 ul.nav-stacked ul.nav-stacked {
   margin-bottom: 0;
 }
 
-/* line 71, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 71, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 ul.nav-stacked ul.nav-stacked > li > a {
   padding-left: 2em;
 }
 
-/* line 74, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 74, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 ul.nav-stacked ul.nav-stacked > li:first-child > a {
   border-radius: 0;
   border-top: 0;
 }
 
-/* line 78, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 78, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
   border-radius: 0;
   border-bottom: 0;
 }
 
-/* line 83, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 83, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .nav-stacked > .active > a,
 .nav-stacked > .active > a:hover {
   color: #ffffff;
@@ -3595,113 +3595,118 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
 }
 
 /* Entries */
-/* line 92, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 92, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 #entries.dropzone {
   padding: 0;
 }
 
-/* line 96, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 96, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .form-model img {
   max-width: 100%;
 }
 
-/* line 100, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list {
-  overflow: hidden;
+/* line 101, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+#entries-container {
   min-height: 400px;
-  padding: 0;
+  padding: 0 20px 0 0;
 }
-/* line 105, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 16px 16px 0;
-  min-height: 100px;
+/* line 106, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+#entries-container .grid #infinite-entries {
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  column-count: 4;
+  column-gap: 20px;
+}
+/* line 115, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+#entries-container .grid .entry {
   overflow: hidden;
   position: relative;
+  padding-bottom: 0;
 }
-/* line 113, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry > a > img {
-  width: 200px;
-  height: 200px;
-}
-/* line 118, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry .entry-tools {
-  background: #333;
-  opacity: 0.6;
-  position: absolute;
-  bottom: -31px;
+/* line 120, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+#entries-container .grid .entry > a {
+  display: inline-block;
   width: 100%;
-  padding: 5px 7px;
 }
-/* line 126, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry .entry-tools a .fa {
-  padding: 3px 3px 4px 4px;
-  border-radius: 4px;
-}
-/* line 131, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry .entry-tools a:hover .fa {
-  background-color: #ebebeb;
-}
-/* line 136, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#entries-list .entry:hover .entry-tools {
-  bottom: 0;
+/* line 124, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+#entries-container .grid .entry > a img {
+  width: 100%;
 }
 
-/* line 143, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 139, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .entry-info > img {
   width: 100%;
   margin-bottom: 20px;
 }
-/* line 148, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-.entry-info input[type="text"] {
+
+/* line 146, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+.info dl {
+  margin-bottom: 5px;
+}
+/* line 149, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+.info dt.label {
+  background-color: #2B3E53;
+}
+/* line 152, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+.info pre {
+  padding: 5px 10px;
+}
+/* line 155, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+.info input[type="text"] {
   width: 100%;
   padding: 5px 10px;
 }
 
-/* line 155, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-.info dl {
-  margin-bottom: 5px;
-}
-/* line 158, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-.info dt.label {
-  background-color: #2B3E53;
-}
-/* line 161, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-.info pre {
-  padding: 5px 10px;
-}
-
 /* Dropzone */
-/* line 168, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 163, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .dropzone {
   border: 0 none;
 }
 
 /* Theme Tweaks */
-/* line 173, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 168, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .label {
   line-height: 1.8;
 }
 
-/* line 176, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 171, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 #form-image img {
   max-width: 100%;
 }
 
 /* Custom Elements */
-/* line 182, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 177, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 #search-form {
   padding-top: 6px;
   width: 12em;
 }
 
-/* line 189, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
-#toolbar {
-  padding-right: 20px;
-}
-
-/* line 193, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss */
+/* line 184, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
 .m-right-7 {
   margin-right: 7px;
+}
+
+@media only screen and (max-width: 799px), only screen and (max-device-width: 799px) {
+  /* line 189, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+  #infinite-entries {
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    column-count: 3;
+    column-gap: 10px;
+  }
+}
+@media only screen and (max-width: 599px), only screen and (max-device-width: 599px) {
+  /* line 201, /Users/diego/Sites/gifantry/app/assets/stylesheets/application.css.scss.erb */
+  #infinite-entries {
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    column-count: 24;
+    column-gap: 10px;
+  }
 }
