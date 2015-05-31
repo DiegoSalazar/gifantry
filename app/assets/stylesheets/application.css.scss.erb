@@ -20,6 +20,17 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('<%= asset_path("fontawesome-webfont.eot")%>?v=4.2.0');
+  src: url('<%= asset_path("fontawesome-webfont.eot")%>?#iefix&v=4.2.0') format('embedded-opentype'),
+       url('<%= asset_path("fontawesome-webfont.woff")%>?v=4.2.0') format('woff'),
+       url('<%= asset_path("fontawesome-webfont.ttf")%>?v=4.2.0') format('truetype'),
+       url('<%= asset_path("fontawesome-webfont.svg")%>?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 //->Prelang (ui_framework:twitter_bootstrap)
 
 // Give everything in 'yield' margin to separate it.
@@ -129,7 +140,7 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
 
   .list {
     .entry {
-      
+
     }
   }
 }
@@ -206,3 +217,4 @@ ul.nav-stacked ul.nav-stacked > li:last-child:visible > a {
     column-gap: 10px;
   }
 }
+
