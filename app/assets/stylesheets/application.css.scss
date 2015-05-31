@@ -13,13 +13,12 @@
 *= require cyborg.bootstrap.min
 *= require dropzone
 *= require token-input-mac
-*= require font-awesome
 *= require_tree .
 *= require_self
 */
 
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 //->Prelang (ui_framework:twitter_bootstrap)
 
