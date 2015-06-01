@@ -1,6 +1,7 @@
 class ImportsController < ApplicationController
   layout "modal_layout"
   before_action :set_albums
+  before_action :set_entry_view, only: :create
 
   def index
     @album_id = params[:album_id]
@@ -11,7 +12,7 @@ class ImportsController < ApplicationController
 
     if @importer.import
       @album = Album.find_by_id import_params[:album_id] # sets the highlighted album in sidenav
-      @entries = @album ? @album.entries.sorted : get_entries
+      @entries = @album ? @album.entries.sorted.page(params[:page]) : get_entries
     else
       flash.now[:error] = @importer.error
     end

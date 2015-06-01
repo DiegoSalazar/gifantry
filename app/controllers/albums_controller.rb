@@ -76,10 +76,6 @@ class AlbumsController < ApplicationController
     @entry = Entry.new
   end
 
-  def set_entry_view
-    @entry_view = cookies[:entry_view] ||= Entry::VIEWS.default
-  end
-
   def album_params
     params.require(:album).permit(:name)
   end

@@ -13,6 +13,7 @@ class Importer
   def import
     each_url { |url| import_from_url url }
     each_file { |file| import_from_file file }
+    
     hydra.run if @params[:urls].present?
     true
   rescue ActiveRecord::RecordInvalid => e
@@ -36,10 +37,17 @@ class Importer
 
   def import_from_url(url)
     request = Typhoeus::Request.new url
+
     request.on_complete do |response|
       raise ActiveRecord::RecordInvalid unless response.success?
-      @entries << @klass.create!(image: StringIO.new(response.body), album_id: @params[:album_id])
+
+      @entries << @klass.create!(
+        image: StringIO.new(response.body),
+        image_file_name: File.basename(url),
+        album_id: @params[:album_id]
+      )
     end
+
     hydra.queue request
   end
 

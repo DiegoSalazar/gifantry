@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_entry_view
+    @entry_view = cookies[:entry_view] ||= Entry::VIEWS.default
+  end
+
   private
   
   #-> Prelang (user_login:devise)

@@ -1,7 +1,7 @@
 <% if @importer.success? %>
   $(".modal").modal("hide");
   $("#sidenav").replaceWith("<%= j render('elements/sidenav') %>");
-  $("#entries-list").replaceWith("<%= j render('entries/list') %>");
+  $("#entries-container").replaceWith('<%= j render("entries/#{@entry_view}") %>');
 
   <% @importer.entries.each do |entry| %>
     $("#<%= dom_id entry %>").effect("highlight", { color: "#ff8800" }, 3000);
