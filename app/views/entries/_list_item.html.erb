@@ -1,16 +1,16 @@
 <li id="<%= dom_id list_item %>" class="entry">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-xs-2">
       <div class="thumbnail">
         <%= image_tag list_item.image.url %>
       </div>
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-xs-8">
       <%= text_field_tag nil, list_item.image.url, class: "form-control select-text" %>
     </div>
 
-    <div class="col-sm-2">
+    <div class="col-xs-2">
       <div class="btn-group pull-right">
         <%= link_to edit_entry_path(list_item), class: "btn btn-sm btn-primary" do %>
           <span class="fa fa-edit"></span>
