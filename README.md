@@ -7,7 +7,7 @@ Gifantry is a Rails based web app that allows bulk upload and tagging/categoriza
 Clone this repo
 
 ```
-git clone 
+git clone https://github.com/DiegoSalazar/gifantry.git
 cd gifantry
 bundle
 rake db:setup
