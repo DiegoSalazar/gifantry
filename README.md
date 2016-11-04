@@ -1,6 +1,6 @@
 # Gifantry
 
-Gifantry is a Rails based web app that allows bulk upload and tagging/categorization of images. It provides full text search and quick direct link copy.
+Gifantry is a Rails based web app that allows bulk upload and tagging/categorization of images. It provides full text search and quick direct link copy. It has Facebook login as well as traditional email based login.
 
 ## Installation
 
@@ -19,7 +19,7 @@ Run the tests
 rspec
 ```
 
-## Usafe
+## Usage
 
 Start the server
 
