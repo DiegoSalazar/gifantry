@@ -10,8 +10,7 @@ Clone this repo
 git clone https://github.com/DiegoSalazar/gifantry.git
 cd gifantry
 bundle
-rake db:setup
-rake db:migrate
+rake db:create db:setup db:migrate
 rails server
 ```
 
